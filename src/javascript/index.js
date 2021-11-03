@@ -1,5 +1,5 @@
-window.onload = function () {
+window.onload = () => ({
 	//Selections
 	//EventListener
-};
+});
 //Functions
