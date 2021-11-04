@@ -9,25 +9,16 @@
 		<script src="src/javascript/index.js"></script>
 	</head>
 	<body>
-		<header class="header">
-			<h1>Todo Application</h1>
-			<p>Need to organize? make a list of it, and get started!</p>
-		</header>
-		<section class="todoWrapper">
-			<form class="userInputContainer">
+		<div class="todo-wrapper">
+			<from>
 				<input type="text" class="userInput" />
-				<button class="submitInput" type="submit">Add Todo</button>
-			</form>
+				<button type="submit" class="submitForm">Add Todo</button>
+			</from>
 
-			<div class="todoListContainer">
-				<ul class="todoList"></ul>
-			</div>
-		</section>
-		<footer class="footer">
-			<h2>What you have achived</h2>
-			<div class="savedTodoContainer">
-				<ul class="savedTodo"></ul>
-			</div>
-		</footer>
+			<ul class="listOfTodos"></ul>
+		</div>
+		<div class="pending">
+			<div class="numberOfTasks">there are 4 things you should attend to!</div>
+		</div>
 	</body>
 </html>
