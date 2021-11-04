@@ -15,12 +15,20 @@ function addTodo(e) {
 	let createTodoLi = document.createElement("li");
 	createTodoLi.innerText = userInput.value;
 	createTodoLi.classList.add("todo-li");
+	userInput.value = "";
 
 	let removeButton = document.createElement("button");
-	removeButton.innerText = "%"; //can create html and display it
+	removeButton.innerText = "Remove Todo";
 	removeButton.classList.add("remove-btn");
+	removeButton.addEventListener("click", deleteTodo);
 
 	createTodoLi.appendChild(removeButton);
 	todoContainer.appendChild(createTodoLi);
 	listOfTodos.appendChild(todoContainer);
+
+	function deleteTodo() {
+		let todo = createTodoLi.parentElement;
+		todo.classList.add("removed");
+		todo.remove();
+	}
 }
