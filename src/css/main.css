@@ -5,3 +5,23 @@
 
 body {
   font-size: 14pt; }
+
+.header {
+  width: 100vw;
+  height: 200px; }
+
+.todo-wrapper {
+  height: 300px;
+  width: 100vw;
+  background-color: #a06926;
+  display: flex;
+  flex-direction: column; }
+  .todo-wrapper form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+    background-color: cadetblue; }
+    .todo-wrapper form .userInput {
+      width: 70%; }
