@@ -8,27 +8,3 @@
 body {
 	font-size: 14pt;
 }
-
-.header {
-	width: 100vw;
-	height: 200px;
-}
-
-.todo-wrapper {
-	height: 300px;
-	width: 100vw;
-	background-color: rgb(160, 105, 38);
-	display: flex;
-	flex-direction: column;
-	form {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 20%;
-		width: 100%;
-		background-color: cadetblue;
-		.userInput {
-			width: 70%;
-		}
-	}
-}
