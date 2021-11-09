@@ -9,19 +9,35 @@
 		<script src="src/javascript/index.js"></script>
 	</head>
 	<body>
-		<div class="header">
-			<h1>Welcome to the Todo app!</h1>
-		</div>
-		<div class="todo-wrapper">
+		<header>
+			<h1>Todo App</h1>
+			<p>Get orginazed! Write down what you need to get done, Then do it.</p>
+		</header>
+		<section>
 			<form>
-				<input type="text" class="userInput" />
-				<button type="submit" class="submitForm">Add Todo</button>
-			</form>
+				<label for="userInputTitle">TITLE:</label>
+				<input type="text" id="userInputTitle" placeholder="Title" required />
 
-			<ul class="listOfTodos"></ul>
-		</div>
-		<div class="pending">
-			<div class="numberOfTasks">there are 4 things you should attend to!</div>
-		</div>
+				<label for="userInputContent">DESC:</label>
+				<input
+					type="text"
+					id="userInputContent"
+					placeholder="Description"
+					required
+				/>
+
+				<button type="submit" id="submitInput">ADD TODO</button>
+				<div class="select">
+					<select name="todos" class="filter-todo">
+						<option value="all">All</option>
+						<option value="completed">Completed</option>
+						<option value="uncompleted">Uncompleted</option>
+					</select>
+				</div>
+			</form>
+		</section>
+		<footer>
+			<ul class="todo-list"></ul>
+		</footer>
 	</body>
 </html>

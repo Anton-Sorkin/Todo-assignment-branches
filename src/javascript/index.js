@@ -1,34 +1,76 @@
-window.onload = () => {
-	let submitForm = document.querySelector(".submitForm");
-	submitForm.addEventListener("click", addTodo);
+class Todo {
+	constructor(todoTitle, todoContent) {
+		this.todoTitle = todoTitle;
+		this.todoContent = todoContent;
+	}
+}
+window.onload = function () {
+	let sumbitButton = document.querySelector("#submitInput");
+	sumbitButton.addEventListener("click", createTodo);
 };
 
-function addTodo(e) {
+function createTodo(e) {
 	e.preventDefault();
 
-	let listOfTodos = document.querySelector(".listOfTodos");
-	let userInput = document.querySelector(".userInput");
+	const filterOption = document.querySelector(".filter-todo");
+	filterOption.addEventListener("click", filterTodo);
 
-	let todoContainer = document.createElement("div");
-	todoContainer.classList.add("todo-containter");
+	const todoList = document.querySelector(".todo-list");
+	todoList.addEventListener("click", deleteCheck);
 
-	let createTodoLi = document.createElement("li");
-	createTodoLi.innerText = userInput.value;
-	createTodoLi.classList.add("todo-li");
-	userInput.value = "";
+	let userTitleInput = document.querySelector("#userInputTitle");
+	let userContentInput = document.querySelector("#userInputContent");
 
-	let removeButton = document.createElement("button");
-	removeButton.innerText = "Remove Todo";
-	removeButton.classList.add("remove-btn");
-	removeButton.addEventListener("click", deleteTodo);
+	title = userTitleInput.value;
+	content = userContentInput.value;
 
-	createTodoLi.appendChild(removeButton);
-	todoContainer.appendChild(createTodoLi);
-	listOfTodos.appendChild(todoContainer);
+	let todo = new Todo(title, content);
 
-	function deleteTodo() {
-		let todo = createTodoLi.parentElement;
-		todo.classList.add("removed");
-		todo.remove();
+	let todos = [];
+	todos.push(todo);
+
+	userTitleInput.value = "";
+	userContentInput.value = "";
+
+	let todoContainer = document.createElement("li");
+	todoContainer.className = "todo-Container";
+
+	for (let i = 0; i < todos.length; i++) {
+		let header = document.createElement("h3");
+		let content = document.createElement("span");
+		const completed = document.createElement("button");
+		const remove = document.createElement("button");
+
+		header.innerHTML = todos[i].todoTitle;
+		content.innerHTML = todos[i].todoContent;
+		completed.innerText = "#";
+		remove.innerText = "#";
+
+		header.className = "todo-Title";
+		content.className = "todo-Content";
+		completed.classList.add("todo-Complete");
+		remove.classList.add("todo-Remove");
+
+		todoContainer.appendChild(header);
+		todoContainer.appendChild(content);
+		todoContainer.appendChild(completed);
+		todoContainer.appendChild(remove);
 	}
+
+	function deleteCheck(e) {
+		const item = e.target;
+
+		if (item.classList[0] === "todo-Remove") {
+			let todo = item.parentElement;
+			todo.classList.add("removed");
+			todo.remove();
+		}
+		if (item.classList[0] === "todo-Complete") {
+			let todo = item.parentElement;
+			todo.classList.add("completed");
+		}
+	}
+
+	todoList.appendChild(todoContainer);
+	document.querySelector("footer").appendChild(todoList);
 }
