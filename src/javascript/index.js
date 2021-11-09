@@ -73,4 +73,28 @@ function createTodo(e) {
 
 	todoList.appendChild(todoContainer);
 	document.querySelector("footer").appendChild(todoList);
+
+	function filterTodo(e) {
+		const markedTodo = todoList.childNodes;
+		markedTodo.forEach(function (todo) {
+			switch (e.target.value) {
+				case "all":
+					todo.style.display = "flex";
+					break;
+				case "completed":
+					if (todo.classList.contains("completed")) {
+						todo.style.display = "flex";
+					} else {
+						todo.style.display = "none";
+					}
+					break;
+				case "uncompleted":
+					if (!todo.classList.contains("completed")) {
+						todo.style.display = "flex";
+					} else {
+						todo.style.display = "none";
+					}
+			}
+		});
+	}
 }
