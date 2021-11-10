@@ -29,6 +29,14 @@ function createTodo(e) {
 	let todos = [];
 	todos.push(todo);
 
+	localStorage.setItem("localTodo", todo);
+	let todosAsText = JSON.stringify(todo);
+	localStorage.setItem("localTodo", todosAsText);
+
+	let theTodoFromLocalstorage = localStorage.getItem("localTodo");
+
+	let todoAsObject = JSON.parse(theTodoFromLocalstorage);
+
 	userTitleInput.value = "";
 	userContentInput.value = "";
 
@@ -41,8 +49,8 @@ function createTodo(e) {
 		const completed = document.createElement("button");
 		const remove = document.createElement("button");
 
-		header.innerHTML = todos[i].todoTitle;
-		content.innerHTML = todos[i].todoContent;
+		header.innerHTML = todoAsObject.todoTitle;
+		content.innerHTML = todoAsObject.todoContent;
 		completed.innerText = "Done";
 		remove.innerText = "Remove";
 
@@ -64,6 +72,7 @@ function createTodo(e) {
 			let todo = item.parentElement;
 			todo.classList.add("removed");
 			todo.remove();
+			localStorage.removeItem("localTodo");
 		}
 		if (item.classList[0] === "todo-Complete") {
 			let todo = item.parentElement;
