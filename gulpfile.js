@@ -30,4 +30,4 @@ gulp.task("minjs", function () {
 
 gulp.task("compress", gulp.series("minify", "minjs"), function () {});
 
-gulp.task("default", gulp.series("compile", "compress", "watch-scss"), function () {});
+gulp.task("default", gulp.series("compile", "watch-scss"), function () {});
