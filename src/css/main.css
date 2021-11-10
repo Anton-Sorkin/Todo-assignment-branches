@@ -64,30 +64,33 @@ body {
       background: #fefefe;
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
       padding: 15px;
-      display: flex;
-      height: 100px;
-      justify-content: flex-start;
-      gap: 20px; }
+      display: grid;
+      height: 120px;
+      grid-template-columns: 1fr 1fr 1fr 0.5fr;
+      grid-template-areas: "a b c d";
+      gap: 2%; }
       body footer .todo-list .todo-Container .todo-Title {
-        font-size: 1.4rem;
-        width: 50px; }
+        font-size: 1rem; }
       body footer .todo-list .todo-Container .todo-Content {
-        align-self: center;
-        width: 50%; }
+        font-size: 0.8rem;
+        align-self: center; }
       body footer .todo-list .todo-Container .todo-Complete {
         border: none;
         background-color: #232323;
-        width: 100px;
         height: 50px;
-        margin: 10px;
-        color: white; }
+        width: 50px;
+        align-self: center;
+        justify-self: end;
+        color: white;
+        font-size: 0.7rem; }
       body footer .todo-list .todo-Container .todo-Remove {
         border: none;
         background-color: #232323;
-        width: 100px;
         height: 50px;
-        margin: 10px;
-        color: white; }
+        width: 50px;
+        align-self: center;
+        color: white;
+        font-size: 0.7rem; }
     body footer .todo-list .completed {
       text-decoration: line-through;
       opacity: 0.5; }

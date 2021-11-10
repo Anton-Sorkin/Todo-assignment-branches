@@ -43,8 +43,8 @@ function createTodo(e) {
 
 		header.innerHTML = todos[i].todoTitle;
 		content.innerHTML = todos[i].todoContent;
-		completed.innerText = "#";
-		remove.innerText = "#";
+		completed.innerText = "Done";
+		remove.innerText = "Remove";
 
 		header.className = "todo-Title";
 		content.className = "todo-Content";
@@ -67,7 +67,7 @@ function createTodo(e) {
 		}
 		if (item.classList[0] === "todo-Complete") {
 			let todo = item.parentElement;
-			todo.classList.add("completed");
+			todo.classList.toggle("completed");
 		}
 	}
 
