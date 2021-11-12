@@ -8,7 +8,6 @@ window.onload = function () {
 	let sumbitButton = document.querySelector("#submitInput");
 	sumbitButton.addEventListener("click", createTodo);
 };
-
 function createTodo(e) {
 	e.preventDefault();
 
@@ -32,9 +31,7 @@ function createTodo(e) {
 	localStorage.setItem("localTodo", todo);
 	let todosAsText = JSON.stringify(todo);
 	localStorage.setItem("localTodo", todosAsText);
-
 	let theTodoFromLocalstorage = localStorage.getItem("localTodo");
-
 	let todoAsObject = JSON.parse(theTodoFromLocalstorage);
 
 	userTitleInput.value = "";
@@ -46,8 +43,8 @@ function createTodo(e) {
 	for (let i = 0; i < todos.length; i++) {
 		let header = document.createElement("h3");
 		let content = document.createElement("span");
-		const completed = document.createElement("button");
-		const remove = document.createElement("button");
+		let completed = document.createElement("button");
+		let remove = document.createElement("button");
 
 		header.innerHTML = todoAsObject.todoTitle;
 		content.innerHTML = todoAsObject.todoContent;
@@ -67,16 +64,16 @@ function createTodo(e) {
 
 	function deleteCheck(e) {
 		const item = e.target;
+		if (item.classList[0] === "todo-Complete") {
+			let todo = item.parentElement;
+			todo.classList.toggle("completed");
+		}
 
 		if (item.classList[0] === "todo-Remove") {
 			let todo = item.parentElement;
 			todo.classList.add("removed");
 			todo.remove();
 			localStorage.removeItem("localTodo");
-		}
-		if (item.classList[0] === "todo-Complete") {
-			let todo = item.parentElement;
-			todo.classList.toggle("completed");
 		}
 	}
 
@@ -88,18 +85,18 @@ function createTodo(e) {
 		markedTodo.forEach(function (todo) {
 			switch (e.target.value) {
 				case "all":
-					todo.style.display = "flex";
+					todo.style.display = "grid";
 					break;
 				case "completed":
 					if (todo.classList.contains("completed")) {
-						todo.style.display = "flex";
+						todo.style.display = "grid";
 					} else {
 						todo.style.display = "none";
 					}
 					break;
 				case "uncompleted":
 					if (!todo.classList.contains("completed")) {
-						todo.style.display = "flex";
+						todo.style.display = "grid";
 					} else {
 						todo.style.display = "none";
 					}
